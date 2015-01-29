@@ -652,3 +652,118 @@ Started GET "/assets/jquery-ui.min.js?body=1" for 10.0.2.2 at 2015-01-28 15:21:5
 
 
 Started GET "/assets/jquery.multiselect.js?body=1" for 10.0.2.2 at 2015-01-28 15:21:53 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddMadmimiCredentialsToShop (20150129115330)
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "shops" ADD COLUMN "madmimi_email" character varying(255)[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "shops" ADD COLUMN "madmimi_api_key" character varying(255)
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "shops" ADD COLUMN "madmimi_list_name" character varying(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150129115330"]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/shops" for 10.0.2.2 at 2015-01-29 11:55:17 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ShopsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "shops"
+  [1m[36mShop Load (0.6ms)[0m  [1mSELECT "shops".* FROM "shops"   ORDER BY "shops"."name" ASC[0m
+  Rendered shops/index.html.erb within layouts/application (15.5ms)
+  Rendered layouts/_navbar.html.erb (0.9ms)
+  Rendered shared/_flash_messages.html.erb (0.6ms)
+Completed 200 OK in 141ms (Views: 132.5ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/bootstrap-switch.min.css?body=1" for 10.0.2.2 at 2015-01-29 11:55:17 +0000
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 10.0.2.2 at 2015-01-29 11:55:17 +0000
+
+
+Started GET "/assets/jquery.multiselect.css?body=1" for 10.0.2.2 at 2015-01-29 11:55:17 +0000
+
+
+Started GET "/assets/jquery.mask.min.js?body=1" for 10.0.2.2 at 2015-01-29 11:55:17 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.js?body=1" for 10.0.2.2 at 2015-01-29 11:55:17 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-01-29 11:55:17 +0000
+
+
+Started GET "/assets/jquery-ui.min.js?body=1" for 10.0.2.2 at 2015-01-29 11:55:17 +0000
+
+
+Started GET "/assets/jquery.multiselect.js?body=1" for 10.0.2.2 at 2015-01-29 11:55:17 +0000
+
+
+Started GET "/shops" for 10.0.2.2 at 2015-01-29 11:59:12 +0000
+Processing by ShopsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "shops"
+  [1m[36mShop Load (0.3ms)[0m  [1mSELECT "shops".* FROM "shops"   ORDER BY "shops"."name" ASC[0m
+  Rendered shops/index.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_navbar.html.erb (0.2ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 17ms (Views: 15.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/jquery.multiselect.css?body=1" for 10.0.2.2 at 2015-01-29 11:59:12 +0000
+
+
+Started GET "/assets/jquery.mask.min.js?body=1" for 10.0.2.2 at 2015-01-29 11:59:12 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.js?body=1" for 10.0.2.2 at 2015-01-29 11:59:12 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-01-29 11:59:12 +0000
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 10.0.2.2 at 2015-01-29 11:59:12 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.css?body=1" for 10.0.2.2 at 2015-01-29 11:59:12 +0000
+
+
+Started GET "/assets/jquery-ui.min.js?body=1" for 10.0.2.2 at 2015-01-29 11:59:12 +0000
+
+
+Started GET "/assets/jquery.multiselect.js?body=1" for 10.0.2.2 at 2015-01-29 11:59:12 +0000
+
+
+Started GET "/shops/1/edit" for 10.0.2.2 at 2015-01-29 11:59:13 +0000
+Processing by ShopsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mShop Load (0.3ms)[0m  SELECT  "shops".* FROM "shops"  WHERE "shops"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_error_messages.html.erb (2.6ms)
+  Rendered shops/_form.html.erb (23.8ms)
+  Rendered shops/edit.html.erb within layouts/application (32.0ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "shops"  WHERE ("shops"."id" != 1)[0m
+  Rendered layouts/_navbar.html.erb (5.8ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 58ms (Views: 54.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 10.0.2.2 at 2015-01-29 11:59:13 +0000
+
+
+Started GET "/assets/jquery.mask.min.js?body=1" for 10.0.2.2 at 2015-01-29 11:59:13 +0000
+
+
+Started GET "/assets/jquery.multiselect.css?body=1" for 10.0.2.2 at 2015-01-29 11:59:13 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-01-29 11:59:13 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.js?body=1" for 10.0.2.2 at 2015-01-29 11:59:13 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.css?body=1" for 10.0.2.2 at 2015-01-29 11:59:13 +0000
+
+
+Started GET "/assets/jquery-ui.min.js?body=1" for 10.0.2.2 at 2015-01-29 11:59:13 +0000
+
+
+Started GET "/assets/jquery.multiselect.js?body=1" for 10.0.2.2 at 2015-01-29 11:59:13 +0000
