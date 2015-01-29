@@ -1,0 +1,23 @@
+<%= form_for @shop do |f| %>
+  <%= render 'shared/error_messages', resource: @shop %>
+
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :host %>
+      <%= f.text_field :host, class: 'form-control' %>
+
+      <%= f.label :token %>
+      <%= f.text_field :token, disabled: true, class: 'form-control' %>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= f.submit 'Salvar', class: 'btn btn-primary' %>
+      <%= link_to 'Cancelar', shops_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>
