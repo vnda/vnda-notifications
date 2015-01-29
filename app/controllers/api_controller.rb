@@ -4,7 +4,7 @@ class ApiController < ApplicationController
   def schedule
     options = JSON.parse(params[:options], {:symbolize_names => true}) if params[:options]
     vars = JSON.parse(params[:vars], {:symbolize_names => true}) if params[:vars]
-    promotion = options[:promotion_name]
+    promotion = options[:promotion_name] if params[:promotion_name]
     to = params[:to]
     options[:recipients] = to unless to.blank?
 

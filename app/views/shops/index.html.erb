@@ -10,6 +10,8 @@
       <th>Nome</th>
       <th> Host</th>
       <th>Token da API</th>
+      <th>Api do Madmimi</th>
+      <th>Email do Madmimi</th>
       <th></th>
     </tr>
   </thead>
@@ -21,6 +23,8 @@
       <td><%= link_to shop.name, edit_shop_path(shop) %></td>
       <td><%= shop.host %></td>
       <td><%= shop.token %></td>
+      <td><%= shop.madmimi_api_key %></td>
+      <td><%= shop.madmimi_email %></td>
       <td class="text-right">
         <%= link_to content_tag(:span, nil, class: 'glyphicon glyphicon-pencil'), edit_shop_path(shop) %>
         <%= link_to 'x', shop, method: :delete, data: { confirm: "Tem certeza que deseja apagar a loja #{shop.name}?" } %>

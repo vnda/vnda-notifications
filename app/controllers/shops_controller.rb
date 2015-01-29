@@ -39,6 +39,6 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :host, :token)
+    params.require(:shop).permit(:name, :host, :token, :madmimi_api_key, :madmimi_email)
   end
 end
