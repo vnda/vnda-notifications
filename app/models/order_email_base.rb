@@ -45,20 +45,15 @@ class OrderEmailBase
 
   def email_complete?
     check_required_options(options)
-    # check_required_vars(vars)
-    # nao precisa
+    check_required_vars(vars)
   end
 
   def self.from_order shop, order, promotion_name, subject
     @shop = shop
     address = order_shipping_address(order)
     # Buscar o endereço api
-
     options = extract_options(shop, order, address, promotion_name, subject)
-
-    # vars = extract_variables(shop, order, address)
-    # nao precisa
-    vars = nil
+    vars = extract_variables(shop, order, address)
 
     self.new(shop, options, vars)
   end
@@ -70,7 +65,7 @@ class OrderEmailBase
       "promotion_name" => promotion_name,
       "subject" => subject,
       "from" => "#{shop.name} <#{shop.madmimi_email}>",
-      "recipients" => "#{order['first_name']} #{order['last_name']} <#{address['email']}>"
+      "recipients" => "#{address['first_name']} #{address['last_name']} <#{address['email']}>"
     }
   end
 
@@ -80,8 +75,8 @@ class OrderEmailBase
       "nome" => address['first_name'],
       "sobrenome" => address['last_name'],
       "pedido" => order['code'],
-      "paginadopedido" => "https://#{shop.host}/pedido/#{order.token}",
-      "experienciadocliente" => review_links(shop.host, order.token),
+      "paginadopedido" => "https://#{shop.host}/pedido/#{order['token']}",
+      "experienciadocliente" => review_links(shop.host, order['token']),
       "valordodesconto" => order['discount_price'].to_f > 0 ? number_to_currency(order['discount_price']) : 0,
       "valordoenvio" => order['shipping_price'].to_f > 0 ? number_to_currency(order['shipping_price']) : 0,
       "valordopedido" => number_to_currency(order['total']),
@@ -112,14 +107,14 @@ class OrderEmailBase
     url = "http://#{@shop.api_key}:#{@shop.api_password}@#{@shop.host}/api/v2/orders/#{order['code']}/shipping_address"
     response = Excon.get(url)
     return nil unless response.status == 200
-    shipping = JSON.parse(response.body)
+    return shipping = JSON.parse(response.body)
   end
 
   def self.order_billing_address order
     url = "http://#{@shop.api_key}:#{@shop.api_password}@#{@shop.host}/api/v2/orders/#{order['code']}/billing_address"
     response = Excon.get(url)
     return nil unless response.status == 200
-    shipping = JSON.parse(response.body)
+    return shipping = JSON.parse(response.body)
   end
 
 
@@ -147,12 +142,17 @@ class OrderEmailBase
   end
 
   def self.order_items(order)
+    url = "http://#{@shop.api_key}:#{@shop.api_password}@#{@shop.host}/api/v2/orders/#{order['code']}/items"
+    response = Excon.get(url)
+    return nil unless response.status == 200
+
+    items = JSON.parse(response.body)
     erb = ERB.new <<-HTML
       <table cellspacing="0" cellpadding="10" border="0">
-        <% order['items'].each_with_index do |item, index| %>
+        <% items.each_with_index do |item, index| %>
           <tr>
             <td>
-              <img src="http:<%= item['thumb']('80x80') %>" />
+              <img src="http:<%= item['image_url'] %>" />
             </td>
             <td>
               Item <%= index + 1 %>: <%= item['name'] %><br />

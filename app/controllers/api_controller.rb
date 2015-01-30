@@ -8,7 +8,7 @@ class ApiController < ApplicationController
     # to = params[:to]
     # options[:recipients] = to unless to.blank?
 
-    # OrderEmailBase.from_order(@shop, params, 'promotion_name', 'subject')
+    # OrderEmailBase.from_order(@shop, params['order'], 'promotion_name', 'subject')
 
     binding.pry
 
