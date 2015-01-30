@@ -7,3 +7,4 @@ gem 'pg'
 gem 'madmimi'
 gem 'pry'
 gem 'sidekiq'
+gem "excon"

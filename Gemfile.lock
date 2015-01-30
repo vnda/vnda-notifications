@@ -36,6 +36,7 @@ GEM
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     erubis (2.7.0)
+    excon (0.39.5)
     hike (1.2.3)
     hitimes (1.2.2)
     httparty (0.13.3)
@@ -115,6 +116,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  excon
   madmimi
   pg
   pry

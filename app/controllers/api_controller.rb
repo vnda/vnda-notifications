@@ -2,6 +2,8 @@ class ApiController < ApplicationController
   before_action :set_shop
 
   def schedule
+    # ConfirmedOrderEmail.from_order Shop.first, OrderSerializer.new(Order.last), 'promotion_name', 'subject'
+    binding.pry
     options = JSON.parse(params[:options], {:symbolize_names => true}) if params[:options]
     vars = JSON.parse(params[:vars], {:symbolize_names => true}) if params[:vars]
     promotion = options[:promotion_name] if params[:promotion_name]

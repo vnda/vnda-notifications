@@ -2313,3 +2313,182 @@ Started GET "/assets/jquery.multiselect.js?body=1" for 10.0.2.2 at 2015-01-29 15
 
 
 Started GET "/assets/bootstrap-switch.min.js?body=1" for 10.0.2.2 at 2015-01-29 15:46:48 +0000
+
+
+Started GET "/shops" for 10.0.2.2 at 2015-01-30 11:01:23 +0000
+Processing by ShopsController#index as HTML
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "shops"
+  [1m[36mShop Load (0.3ms)[0m  [1mSELECT "shops".* FROM "shops"   ORDER BY "shops"."name" ASC[0m
+  Rendered shops/index.html.erb within layouts/application (3.2ms)
+  Rendered layouts/_navbar.html.erb (0.2ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/jquery.mask.min.js?body=1" for 10.0.2.2 at 2015-01-30 11:01:23 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-01-30 11:01:24 +0000
+
+
+Started GET "/assets/jquery.multiselect.css?body=1" for 10.0.2.2 at 2015-01-30 11:01:24 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.js?body=1" for 10.0.2.2 at 2015-01-30 11:01:24 +0000
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 10.0.2.2 at 2015-01-30 11:01:24 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.css?body=1" for 10.0.2.2 at 2015-01-30 11:01:24 +0000
+
+
+Started GET "/assets/jquery-ui.min.js?body=1" for 10.0.2.2 at 2015-01-30 11:01:24 +0000
+
+
+Started GET "/assets/jquery.multiselect.js?body=1" for 10.0.2.2 at 2015-01-30 11:01:24 +0000
+
+
+Started POST "/api" for 127.0.0.1 at 2015-01-30 11:22:45 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApiController#schedule as JSON
+  Parameters: {"options"=>"{\"promotion_name\":\"pedido-confirmado\",\"subject\":\"Pedido Confirmado - O seu pedido N\\u00ba 2F9EE51FAA foi confirmado!\",\"from\":\"retex <retex@vnda.com.br>\",\"recipients\":\"uashdaushd aushdaudh <asidj@asd.cpm>\",\"bcc\":\"tech@vnda.com.br\"}", "vars"=>"{\"nome\":\"uashdaushd\",\"sobrenome\":\"aushdaudh\",\"pedido\":\"2F9EE51FAA\",\"paginadopedido\":\"https://retex.lvh.me/pedido/242b815dd77a8c9a876b27a7e98a0120d22697b63bf2a1bd5d5104dd98c8c0b8\",\"experienciadocliente\":\"<a href=\\\"http://retex.lvh.me/pedido/242b815dd77a8c9a876b27a7e98a0120d22697b63bf2a1bd5d5104dd98c8c0b8/avaliacao/excelente\\\"><img src=\\\"http://retex.lvh.me/admin/images/review/excelent-60x60.png\\\"/></a>&nbsp;<a href=\\\"http://retex.lvh.me/pedido/242b815dd77a8c9a876b27a7e98a0120d22697b63bf2a1bd5d5104dd98c8c0b8/avaliacao/bom\\\"><img src=\\\"http://retex.lvh.me/admin/images/review/good-60x60.png\\\"/></a>&nbsp;<a href=\\\"http://retex.lvh.me/pedido/242b815dd77a8c9a876b27a7e98a0120d22697b63bf2a1bd5d5104dd98c8c0b8/avaliacao/ruim\\\"><img src=\\\"http://retex.lvh.me/admin/images/review/bad-60x60.png\\\"/></a>\",\"valordodesconto\":0,\"valordoenvio\":\"R$ 0,00\",\"formadeenvio\":\"translation missing: pt-BR.order.shipping_methods.porto-alegre\",\"valordopedido\":\"R$ 159,90\",\"formadepagamento\":\"Boleto\",\"itensdopedido\":\"      <table cellspacing=\\\"0\\\" cellpadding=\\\"10\\\" border=\\\"0\\\">\\n        \\n          <tr>\\n            <td>\\n              <img src=\\\"http://a3.lvh.me/80x80/empty.gif\\\" />\\n            </td>\\n            <td>\\n              Item 1: Cueca para Incontin\\u00eancia Urin\\u00e1ria Cueca para Incontin\\u00eancia Urin\\u00e1ria Tamanho: G | Cor: Branca<br />\\n              Pre\\u00e7o: R$ 159,90<br />\\n              Quantidade: 1<br />\\n              Subtotal: R$ 159,90\\n            </td>\\n          </tr>\\n        \\n      </table>\\n\",\"enderecoentrega\":\"aushdaushd, 123 - asudhasdh\",\"bairroentrega\":\"aushdaushd\",\"cidadeentrega\":\"Atibaia\",\"estadoentrega\":\"SP\",\"enderecocobranca\":\"aushdaushd, 123\",\"bairrocobranca\":\"aushdaushd\",\"cidadecobranca\":\"Atibaia\",\"estadocobranca\":\"SP\",\"linkdoboleto\":\"https://desenvolvedor.moip.com.br/sandbox/Instrucao.do?token=O2P0I114H1J1B2V1K2Y0J3D6L3H513T0Z4H0J0H0J0T0Z0H6B305D934W7X6\"}", "minutes_delay"=>"", "to"=>""}
+Can't verify CSRF token authenticity
+Shop: 
+  [1m[35mShop Load (0.6ms)[0m  SELECT  "shops".* FROM "shops"  WHERE "shops"."name" = 'unknown-host' LIMIT 1
+Completed 200 OK in 27ms (Views: 0.1ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/api?event=order-confirmed&action=send-to-client" for 127.0.0.1 at 2015-01-30 11:22:45 +0000
+Value for params[:extra_fields] was set to nil, because it was one of [], [null] or [null, null, ...]. Go to http://guides.rubyonrails.org/security.html#unsafe-query-generation for more information.
+Processing by ApiController#schedule as JSON
+  Parameters: {"id"=>283, "code"=>"2F9EE51FAA", "token"=>"242b815dd77a8c9a876b27a7e98a0120d22697b63bf2a1bd5d5104dd98c8c0b8", "status"=>"confirmed", "first_name"=>"uashdaushd", "last_name"=>"aushdaudh", "email"=>"asidj@asd.cpm", "cpf"=>nil, "zip"=>"12946636", "street_name"=>"aushdaushd", "street_number"=>"123", "complement"=>nil, "neighborhood"=>"aushdaushd", "city"=>"Atibaia", "state"=>"SP", "client_id"=>65, "slip"=>true, "slip_url"=>"https://desenvolvedor.moip.com.br/sandbox/Instrucao.do?token=O2P0I114H1J1B2V1K2Y0J3D6L3H513T0Z4H0J0H0J0T0Z0H6B305D934W7X6", "slip_token"=>nil, "payment_method"=>"Boleto", "card_number"=>nil, "shipping_method"=>"porto-alegre", "shipping_price"=>0.0, "subtotal"=>159.9, "discount_price"=>0.0, "total"=>159.9, "tracking_code"=>nil, "updated_at"=>"2015-01-30T09:22:44-02:00", "received_at"=>"2014-11-21T20:36:34-02:00", "confirmed_at"=>"2015-01-30T09:22:44-02:00", "shipped_at"=>nil, "shipping_tracked_at"=>nil, "delivered_at"=>nil, "canceled_at"=>nil, "emails"=>{"received_sent_at"=>nil, "confirmed_sent_at"=>nil, "shipped_sent_at"=>nil, "delivered_sent_at"=>nil, "canceled_sent_at"=>nil}, "installments"=>1, "phone_area"=>"11", "phone"=>"11324422", "cellphone_area"=>nil, "cellphone"=>nil, "extra"=>{}, "items"=>[{"id"=>362, "reference"=>"RT001", "product_name"=>"Cueca para Incontinência Urinária Cueca para Incontinência Urinária", "sku"=>"12004", "variant_name"=>"Tamanho: G | Cor: Branca", "quantity"=>1, "price"=>159.9, "subtotal"=>159.9, "total"=>159.9, "picture_url"=>"//a3.lvh.me/empty.gif", "weight"=>"0.1", "width"=>"11.0", "height"=>"2.0", "length"=>"16.0", "extra_info"=>{}, "properties"=>{"property1"=>"{\"name\":\"codigo_macle\",\"value\":\"branco\",\"defining\":true}", "property2"=>"{\"name\":\"\",\"value\":\"G\",\"defining\":true}", "property3"=>"{\"name\":\"\",\"value\":null,\"defining\":null}"}}], "extra_fields"=>nil, "event"=>"order-confirmed", "api"=>{"id"=>283, "code"=>"2F9EE51FAA", "token"=>"242b815dd77a8c9a876b27a7e98a0120d22697b63bf2a1bd5d5104dd98c8c0b8", "status"=>"confirmed", "first_name"=>"uashdaushd", "last_name"=>"aushdaudh", "email"=>"asidj@asd.cpm", "cpf"=>nil, "zip"=>"12946636", "street_name"=>"aushdaushd", "street_number"=>"123", "complement"=>nil, "neighborhood"=>"aushdaushd", "city"=>"Atibaia", "state"=>"SP", "client_id"=>65, "slip"=>true, "slip_url"=>"https://desenvolvedor.moip.com.br/sandbox/Instrucao.do?token=O2P0I114H1J1B2V1K2Y0J3D6L3H513T0Z4H0J0H0J0T0Z0H6B305D934W7X6", "slip_token"=>nil, "payment_method"=>"Boleto", "card_number"=>nil, "shipping_method"=>"porto-alegre", "shipping_price"=>0.0, "subtotal"=>159.9, "discount_price"=>0.0, "total"=>159.9, "tracking_code"=>nil, "updated_at"=>"2015-01-30T09:22:44-02:00", "received_at"=>"2014-11-21T20:36:34-02:00", "confirmed_at"=>"2015-01-30T09:22:44-02:00", "shipped_at"=>nil, "shipping_tracked_at"=>nil, "delivered_at"=>nil, "canceled_at"=>nil, "emails"=>{"received_sent_at"=>nil, "confirmed_sent_at"=>nil, "shipped_sent_at"=>nil, "delivered_sent_at"=>nil, "canceled_sent_at"=>nil}, "installments"=>1, "phone_area"=>"11", "phone"=>"11324422", "cellphone_area"=>nil, "cellphone"=>nil, "extra"=>{}, "items"=>[{"id"=>362, "reference"=>"RT001", "product_name"=>"Cueca para Incontinência Urinária Cueca para Incontinência Urinária", "sku"=>"12004", "variant_name"=>"Tamanho: G | Cor: Branca", "quantity"=>1, "price"=>159.9, "subtotal"=>159.9, "total"=>159.9, "picture_url"=>"//a3.lvh.me/empty.gif", "weight"=>"0.1", "width"=>"11.0", "height"=>"2.0", "length"=>"16.0", "extra_info"=>{}, "properties"=>{"property1"=>"{\"name\":\"codigo_macle\",\"value\":\"branco\",\"defining\":true}", "property2"=>"{\"name\":\"\",\"value\":\"G\",\"defining\":true}", "property3"=>"{\"name\":\"\",\"value\":null,\"defining\":null}"}}], "extra_fields"=>nil}}
+Can't verify CSRF token authenticity
+Shop: 
+  [1m[36mShop Load (0.5ms)[0m  [1mSELECT  "shops".* FROM "shops"  WHERE "shops"."token" = '242b815dd77a8c9a876b27a7e98a0120d22697b63bf2a1bd5d5104dd98c8c0b8' LIMIT 1[0m
+Filter chain halted as :set_shop rendered or redirected
+Completed 401 Unauthorized in 29ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/api?token=%2084e7f547cdfd18eed0fcaa101bcaea26%20&event=order-confirmed&action=send-to-client" for 10.0.2.2 at 2015-01-30 11:29:25 +0000
+
+ActionController::RoutingError (No route matches [GET] "/api"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (11.7ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (30.5ms)
+
+
+Started GET "/api" for 10.0.2.2 at 2015-01-30 11:29:49 +0000
+
+ActionController::RoutingError (No route matches [GET] "/api"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.2ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (15.8ms)
+
+
+Started POST "/api?token=84e7f547cdfd18eed0fcaa101bcaea26&event=order-confirmed&action=send-to-client" for 127.0.0.1 at 2015-01-30 11:31:59 +0000
+
+RuntimeError (You should not use the `match` method in your router without specifying an HTTP method.
+If you want to expose your action to both GET and POST, add `via: [:get, :post]` option.
+If you want to expose your action to GET, use `get` in the router:
+  Instead of: match "controller#action"
+  Do: get "controller#action"):
+  config/routes.rb:6:in `block (2 levels) in <top (required)>'
+  config/routes.rb:5:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.9ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (21.2ms)
+
+
+Started POST "/api?token=84e7f547cdfd18eed0fcaa101bcaea26&event=order-confirmed&action=send-to-client" for 127.0.0.1 at 2015-01-30 11:32:20 +0000
+Processing by ApiController#schedule as JSON
+  Parameters: {"id"=>264, "code"=>"00CA1D6BDC", "token"=>"84e7f547cdfd18eed0fcaa101bcaea26", "status"=>"confirmed", "first_name"=>"fer", "last_name"=>"nando", "email"=>"fervarani@gmail.com", "cpf"=>"37299680840", "zip"=>"12946636", "street_name"=>"rua teste", "street_number"=>"123", "complement"=>"", "neighborhood"=>"Recreio Maristela", "city"=>"Atibaia", "state"=>"SP", "client_id"=>34, "slip"=>true, "slip_url"=>"https://desenvolvedor.moip.com.br/sandbox/Instrucao.do?token=T2W0219421D0E0Q8C150N1W4R0T221H9O2I0L0M00060K0Z6Z2A2H3W6O9X6", "slip_token"=>nil, "payment_method"=>"Boleto", "card_number"=>nil, "shipping_method"=>"transportadora_exemplo", "shipping_price"=>170.71, "subtotal"=>159.9, "discount_price"=>0.0, "total"=>330.61, "tracking_code"=>nil, "updated_at"=>"2015-01-30T09:32:20-02:00", "received_at"=>"2014-10-08T10:14:02-03:00", "confirmed_at"=>"2015-01-30T09:32:20-02:00", "shipped_at"=>nil, "shipping_tracked_at"=>nil, "delivered_at"=>nil, "canceled_at"=>nil, "emails"=>{"received_sent_at"=>"2014-10-08T10:14:50-03:00", "confirmed_sent_at"=>nil, "shipped_sent_at"=>nil, "delivered_sent_at"=>nil, "canceled_sent_at"=>nil}, "installments"=>1, "phone_area"=>"11", "phone"=>"123123123", "cellphone_area"=>"", "cellphone"=>"", "extra"=>{}, "items"=>[{"id"=>342, "reference"=>"RT002", "product_name"=>"Calcinha para Incontinência Urinária", "sku"=>"13004", "variant_name"=>"Tamanho: G | Cor: Branca", "quantity"=>1, "price"=>159.9, "subtotal"=>159.9, "total"=>159.9, "picture_url"=>"//a3.lvh.me/empty.gif", "weight"=>"29.0", "width"=>"11.0", "height"=>"2.0", "length"=>"16.0", "extra_info"=>{}, "properties"=>{"property1"=>"{\"name\":\"codigo_macle\",\"value\":\"BB\",\"defining\":false}", "property2"=>"{\"name\":\"\",\"value\":\"G\",\"defining\":false}", "property3"=>"{\"name\":\"\",\"value\":null,\"defining\":null}"}}], "extra_fields"=>[{"name"=>"_gat_UA-38730525-2", "value"=>"1"}, {"name"=>"_ga", "value"=>"GA1.3.1319236697.1412088039"}], "event"=>"order-confirmed", "api"=>{"id"=>264, "code"=>"00CA1D6BDC", "token"=>"84e7f547cdfd18eed0fcaa101bcaea26", "status"=>"confirmed", "first_name"=>"fer", "last_name"=>"nando", "email"=>"fervarani@gmail.com", "cpf"=>"37299680840", "zip"=>"12946636", "street_name"=>"rua teste", "street_number"=>"123", "complement"=>"", "neighborhood"=>"Recreio Maristela", "city"=>"Atibaia", "state"=>"SP", "client_id"=>34, "slip"=>true, "slip_url"=>"https://desenvolvedor.moip.com.br/sandbox/Instrucao.do?token=T2W0219421D0E0Q8C150N1W4R0T221H9O2I0L0M00060K0Z6Z2A2H3W6O9X6", "slip_token"=>nil, "payment_method"=>"Boleto", "card_number"=>nil, "shipping_method"=>"transportadora_exemplo", "shipping_price"=>170.71, "subtotal"=>159.9, "discount_price"=>0.0, "total"=>330.61, "tracking_code"=>nil, "updated_at"=>"2015-01-30T09:32:20-02:00", "received_at"=>"2014-10-08T10:14:02-03:00", "confirmed_at"=>"2015-01-30T09:32:20-02:00", "shipped_at"=>nil, "shipping_tracked_at"=>nil, "delivered_at"=>nil, "canceled_at"=>nil, "emails"=>{"received_sent_at"=>"2014-10-08T10:14:50-03:00", "confirmed_sent_at"=>nil, "shipped_sent_at"=>nil, "delivered_sent_at"=>nil, "canceled_sent_at"=>nil}, "installments"=>1, "phone_area"=>"11", "phone"=>"123123123", "cellphone_area"=>"", "cellphone"=>"", "extra"=>{}, "items"=>[{"id"=>342, "reference"=>"RT002", "product_name"=>"Calcinha para Incontinência Urinária", "sku"=>"13004", "variant_name"=>"Tamanho: G | Cor: Branca", "quantity"=>1, "price"=>159.9, "subtotal"=>159.9, "total"=>159.9, "picture_url"=>"//a3.lvh.me/empty.gif", "weight"=>"29.0", "width"=>"11.0", "height"=>"2.0", "length"=>"16.0", "extra_info"=>{}, "properties"=>{"property1"=>"{\"name\":\"codigo_macle\",\"value\":\"BB\",\"defining\":false}", "property2"=>"{\"name\":\"\",\"value\":\"G\",\"defining\":false}", "property3"=>"{\"name\":\"\",\"value\":null,\"defining\":null}"}}], "extra_fields"=>[{"name"=>"_gat_UA-38730525-2", "value"=>"1"}, {"name"=>"_ga", "value"=>"GA1.3.1319236697.1412088039"}]}}
+Can't verify CSRF token authenticity
+Shop: 
+  [1m[35mShop Load (0.4ms)[0m  SELECT  "shops".* FROM "shops"  WHERE "shops"."token" = '84e7f547cdfd18eed0fcaa101bcaea26' LIMIT 1
+Completed 200 OK in 20ms (Views: 0.2ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/api?token=84e7f547cdfd18eed0fcaa101bcaea26&event=order-confirmed&action=send-to-client" for 127.0.0.1 at 2015-01-30 12:06:50 +0000
+Value for params[:extra_fields] was set to nil, because it was one of [], [null] or [null, null, ...]. Go to http://guides.rubyonrails.org/security.html#unsafe-query-generation for more information.
+Processing by ApiController#schedule as JSON
+  Parameters: {"id"=>233, "code"=>"4EF5D84197", "token"=>"84e7f547cdfd18eed0fcaa101bcaea26", "status"=>"confirmed", "first_name"=>"Francisco", "last_name"=>"Cortivo", "email"=>"francisco@vnda.com.br", "cpf"=>"00596224079", "zip"=>"99051240", "street_name"=>"Rua Uruguai, 1538", "street_number"=>"1125", "complement"=>"", "neighborhood"=>"Petrópolis", "city"=>"Passo Fundo", "state"=>"RS", "client_id"=>15, "slip"=>true, "slip_url"=>"https://desenvolvedor.moip.com.br/sandbox/Instrucao.do?token=U2O0S1Y4K0U681M18104L46113644159M0K020L0S0W0M0P5C65884W6X8T8", "slip_token"=>nil, "payment_method"=>"Boleto", "card_number"=>nil, "shipping_method"=>"correios_pac", "shipping_price"=>9.05, "subtotal"=>159.0, "discount_price"=>0.0, "total"=>168.05, "tracking_code"=>nil, "updated_at"=>"2015-01-30T10:06:50-02:00", "received_at"=>"2014-06-11T14:41:34-03:00", "confirmed_at"=>"2015-01-30T10:06:50-02:00", "shipped_at"=>nil, "shipping_tracked_at"=>nil, "delivered_at"=>nil, "canceled_at"=>nil, "emails"=>{"received_sent_at"=>nil, "confirmed_sent_at"=>nil, "shipped_sent_at"=>nil, "delivered_sent_at"=>nil, "canceled_sent_at"=>nil}, "installments"=>1, "phone_area"=>"54", "phone"=>"81128447", "cellphone_area"=>"54", "cellphone"=>"81128447", "extra"=>{}, "items"=>[{"id"=>308, "reference"=>"RT001", "product_name"=>"Cueca para Incontinência Urinária", "sku"=>"12001", "variant_name"=>"Tamanho: PP | Cor: Branca", "quantity"=>1, "price"=>159.0, "subtotal"=>159.0, "total"=>159.0, "picture_url"=>"//a3.lvh.me/empty.gif", "weight"=>"0.1", "width"=>"11.0", "height"=>"2.0", "length"=>"16.0", "extra_info"=>{}, "properties"=>{"property1"=>"{\"name\":\"codigo_macle\",\"value\":\"COD1234\",\"defining\":false}", "property2"=>"{\"name\":\"\",\"value\":\"aba2\",\"defining\":false}", "property3"=>"{\"name\":\"\",\"value\":\"a\",\"defining\":false}"}}], "extra_fields"=>nil, "event"=>"order-confirmed", "api"=>{"id"=>233, "code"=>"4EF5D84197", "token"=>"84e7f547cdfd18eed0fcaa101bcaea26", "status"=>"confirmed", "first_name"=>"Francisco", "last_name"=>"Cortivo", "email"=>"francisco@vnda.com.br", "cpf"=>"00596224079", "zip"=>"99051240", "street_name"=>"Rua Uruguai, 1538", "street_number"=>"1125", "complement"=>"", "neighborhood"=>"Petrópolis", "city"=>"Passo Fundo", "state"=>"RS", "client_id"=>15, "slip"=>true, "slip_url"=>"https://desenvolvedor.moip.com.br/sandbox/Instrucao.do?token=U2O0S1Y4K0U681M18104L46113644159M0K020L0S0W0M0P5C65884W6X8T8", "slip_token"=>nil, "payment_method"=>"Boleto", "card_number"=>nil, "shipping_method"=>"correios_pac", "shipping_price"=>9.05, "subtotal"=>159.0, "discount_price"=>0.0, "total"=>168.05, "tracking_code"=>nil, "updated_at"=>"2015-01-30T10:06:50-02:00", "received_at"=>"2014-06-11T14:41:34-03:00", "confirmed_at"=>"2015-01-30T10:06:50-02:00", "shipped_at"=>nil, "shipping_tracked_at"=>nil, "delivered_at"=>nil, "canceled_at"=>nil, "emails"=>{"received_sent_at"=>nil, "confirmed_sent_at"=>nil, "shipped_sent_at"=>nil, "delivered_sent_at"=>nil, "canceled_sent_at"=>nil}, "installments"=>1, "phone_area"=>"54", "phone"=>"81128447", "cellphone_area"=>"54", "cellphone"=>"81128447", "extra"=>{}, "items"=>[{"id"=>308, "reference"=>"RT001", "product_name"=>"Cueca para Incontinência Urinária", "sku"=>"12001", "variant_name"=>"Tamanho: PP | Cor: Branca", "quantity"=>1, "price"=>159.0, "subtotal"=>159.0, "total"=>159.0, "picture_url"=>"//a3.lvh.me/empty.gif", "weight"=>"0.1", "width"=>"11.0", "height"=>"2.0", "length"=>"16.0", "extra_info"=>{}, "properties"=>{"property1"=>"{\"name\":\"codigo_macle\",\"value\":\"COD1234\",\"defining\":false}", "property2"=>"{\"name\":\"\",\"value\":\"aba2\",\"defining\":false}", "property3"=>"{\"name\":\"\",\"value\":\"a\",\"defining\":false}"}}], "extra_fields"=>nil}}
+Can't verify CSRF token authenticity
+Shop: 
+  [1m[36mShop Load (0.3ms)[0m  [1mSELECT  "shops".* FROM "shops"  WHERE "shops"."token" = '84e7f547cdfd18eed0fcaa101bcaea26' LIMIT 1[0m
+Completed   in 93312ms
+
+
+Started POST "/api?token=84e7f547cdfd18eed0fcaa101bcaea26&event=order-confirmed&action=send-to-client" for 127.0.0.1 at 2015-01-30 12:08:43 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApiController#schedule as JSON
+  Parameters: {"id"=>232, "code"=>"2C8A57CA42", "token"=>"84e7f547cdfd18eed0fcaa101bcaea26", "status"=>"confirmed", "first_name"=>"Francisco", "last_name"=>"Cortivo", "email"=>"francisco@vnda.com.br", "cpf"=>"00596224079", "zip"=>"99051240", "street_name"=>"Rua Uruguai, 1538", "street_number"=>"1125", "complement"=>"", "neighborhood"=>"Petrópolis", "city"=>"Passo Fundo", "state"=>"RS", "client_id"=>15, "slip"=>true, "slip_url"=>"https://desenvolvedor.moip.com.br/sandbox/Instrucao.do?token=B2N061M4O0E6T191H1F4M3Z9I1H4R3K1E250X0Z0Y0Q0O0L5A6N824V5F9Y9", "slip_token"=>nil, "payment_method"=>"Boleto", "card_number"=>nil, "shipping_method"=>"correios_pac", "shipping_price"=>9.06, "subtotal"=>159.9, "discount_price"=>0.0, "total"=>168.96, "tracking_code"=>nil, "updated_at"=>"2015-01-30T10:08:42-02:00", "received_at"=>"2014-06-11T14:39:15-03:00", "confirmed_at"=>"2015-01-30T10:08:42-02:00", "shipped_at"=>nil, "shipping_tracked_at"=>nil, "delivered_at"=>nil, "canceled_at"=>nil, "emails"=>{"received_sent_at"=>nil, "confirmed_sent_at"=>nil, "shipped_sent_at"=>nil, "delivered_sent_at"=>nil, "canceled_sent_at"=>nil}, "installments"=>1, "phone_area"=>"54", "phone"=>"81128447", "cellphone_area"=>"54", "cellphone"=>"81128447", "extra"=>{}, "items"=>[{"id"=>307, "reference"=>"RT001", "product_name"=>"Cueca para Incontinência Urinária", "sku"=>"12002", "variant_name"=>"Tamanho: P | Cor: Branca", "quantity"=>1, "price"=>159.9, "subtotal"=>159.9, "total"=>159.9, "picture_url"=>"//a3.lvh.me/empty.gif", "weight"=>"0.1", "width"=>"11.0", "height"=>"2.0", "length"=>"16.0", "extra_info"=>{}, "properties"=>{"property1"=>"{\"name\":\"codigo_macle\",\"value\":\"branco\",\"defining\":true}", "property2"=>"{\"name\":\"\",\"value\":\"aba\",\"defining\":true}", "property3"=>"{\"name\":\"\",\"value\":\"b\",\"defining\":true}"}}], "extra_fields"=>nil, "event"=>"order-confirmed", "api"=>{"id"=>232, "code"=>"2C8A57CA42", "token"=>"84e7f547cdfd18eed0fcaa101bcaea26", "status"=>"confirmed", "first_name"=>"Francisco", "last_name"=>"Cortivo", "email"=>"francisco@vnda.com.br", "cpf"=>"00596224079", "zip"=>"99051240", "street_name"=>"Rua Uruguai, 1538", "street_number"=>"1125", "complement"=>"", "neighborhood"=>"Petrópolis", "city"=>"Passo Fundo", "state"=>"RS", "client_id"=>15, "slip"=>true, "slip_url"=>"https://desenvolvedor.moip.com.br/sandbox/Instrucao.do?token=B2N061M4O0E6T191H1F4M3Z9I1H4R3K1E250X0Z0Y0Q0O0L5A6N824V5F9Y9", "slip_token"=>nil, "payment_method"=>"Boleto", "card_number"=>nil, "shipping_method"=>"correios_pac", "shipping_price"=>9.06, "subtotal"=>159.9, "discount_price"=>0.0, "total"=>168.96, "tracking_code"=>nil, "updated_at"=>"2015-01-30T10:08:42-02:00", "received_at"=>"2014-06-11T14:39:15-03:00", "confirmed_at"=>"2015-01-30T10:08:42-02:00", "shipped_at"=>nil, "shipping_tracked_at"=>nil, "delivered_at"=>nil, "canceled_at"=>nil, "emails"=>{"received_sent_at"=>nil, "confirmed_sent_at"=>nil, "shipped_sent_at"=>nil, "delivered_sent_at"=>nil, "canceled_sent_at"=>nil}, "installments"=>1, "phone_area"=>"54", "phone"=>"81128447", "cellphone_area"=>"54", "cellphone"=>"81128447", "extra"=>{}, "items"=>[{"id"=>307, "reference"=>"RT001", "product_name"=>"Cueca para Incontinência Urinária", "sku"=>"12002", "variant_name"=>"Tamanho: P | Cor: Branca", "quantity"=>1, "price"=>159.9, "subtotal"=>159.9, "total"=>159.9, "picture_url"=>"//a3.lvh.me/empty.gif", "weight"=>"0.1", "width"=>"11.0", "height"=>"2.0", "length"=>"16.0", "extra_info"=>{}, "properties"=>{"property1"=>"{\"name\":\"codigo_macle\",\"value\":\"branco\",\"defining\":true}", "property2"=>"{\"name\":\"\",\"value\":\"aba\",\"defining\":true}", "property3"=>"{\"name\":\"\",\"value\":\"b\",\"defining\":true}"}}], "extra_fields"=>nil}}
+Can't verify CSRF token authenticity
+Shop: 
+  [1m[35mShop Load (0.8ms)[0m  SELECT  "shops".* FROM "shops"  WHERE "shops"."token" = '84e7f547cdfd18eed0fcaa101bcaea26' LIMIT 1
+Completed   in 12294538ms
+
+
+Started POST "/api?token=84e7f547cdfd18eed0fcaa101bcaea26&event=order-confirmed&action=send-to-client" for 127.0.0.1 at 2015-01-30 15:35:12 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApiController#schedule as JSON
+  Parameters: {"id"=>263, "code"=>"0D5816E5D8", "token"=>"84e7f547cdfd18eed0fcaa101bcaea26", "status"=>"confirmed", "first_name"=>"fernando", "last_name"=>"varani", "email"=>"fervarani@gmail.com", "cpf"=>"37299680840", "zip"=>"12946636", "street_name"=>"rua teste", "street_number"=>"123", "complement"=>"", "neighborhood"=>"Recreio Maristela", "city"=>"Atibaia", "state"=>"SP", "client_id"=>34, "slip"=>true, "slip_url"=>"https://desenvolvedor.moip.com.br/sandbox/Instrucao.do?token=R2Y0R1J4D1G0X0E8O1S0Y0C7G4P0K9K4H6N0W090W0W0A0R6R2L2Z3I6A7G1", "slip_token"=>nil, "payment_method"=>"Boleto", "card_number"=>nil, "shipping_method"=>"transportadora_exemplo", "shipping_price"=>67.3, "subtotal"=>159.9, "discount_price"=>0.0, "total"=>227.2, "tracking_code"=>nil, "updated_at"=>"2015-01-30T13:35:12-02:00", "received_at"=>"2014-10-08T10:07:41-03:00", "confirmed_at"=>"2015-01-30T13:35:12-02:00", "shipped_at"=>nil, "shipping_tracked_at"=>nil, "delivered_at"=>nil, "canceled_at"=>nil, "emails"=>{"received_sent_at"=>"2014-10-08T10:08:25-03:00", "confirmed_sent_at"=>nil, "shipped_sent_at"=>nil, "delivered_sent_at"=>nil, "canceled_sent_at"=>nil}, "installments"=>1, "phone_area"=>"11", "phone"=>"123412412", "cellphone_area"=>"", "cellphone"=>"", "extra"=>{}, "items"=>[{"id"=>341, "reference"=>"RT002", "product_name"=>"Calcinha para Incontinência Urinária", "sku"=>"13003", "variant_name"=>"Tamanho: M | Cor: Branca", "quantity"=>1, "price"=>159.9, "subtotal"=>159.9, "total"=>159.9, "picture_url"=>"//a3.lvh.me/empty.gif", "weight"=>"0.11", "width"=>"11.0", "height"=>"2.0", "length"=>"16.0", "extra_info"=>{}, "properties"=>{"property1"=>"{\"name\":\"codigo_macle\",\"value\":\"AA\",\"defining\":false}", "property2"=>"{\"name\":\"\",\"value\":\"XG\",\"defining\":false}", "property3"=>"{\"name\":\"\",\"value\":null,\"defining\":null}"}}], "extra_fields"=>[{"name"=>"_gat_UA-38730525-2", "value"=>"1"}, {"name"=>"_ga", "value"=>"GA1.3.1319236697.1412088039"}], "event"=>"order-confirmed", "api"=>{"id"=>263, "code"=>"0D5816E5D8", "token"=>"84e7f547cdfd18eed0fcaa101bcaea26", "status"=>"confirmed", "first_name"=>"fernando", "last_name"=>"varani", "email"=>"fervarani@gmail.com", "cpf"=>"37299680840", "zip"=>"12946636", "street_name"=>"rua teste", "street_number"=>"123", "complement"=>"", "neighborhood"=>"Recreio Maristela", "city"=>"Atibaia", "state"=>"SP", "client_id"=>34, "slip"=>true, "slip_url"=>"https://desenvolvedor.moip.com.br/sandbox/Instrucao.do?token=R2Y0R1J4D1G0X0E8O1S0Y0C7G4P0K9K4H6N0W090W0W0A0R6R2L2Z3I6A7G1", "slip_token"=>nil, "payment_method"=>"Boleto", "card_number"=>nil, "shipping_method"=>"transportadora_exemplo", "shipping_price"=>67.3, "subtotal"=>159.9, "discount_price"=>0.0, "total"=>227.2, "tracking_code"=>nil, "updated_at"=>"2015-01-30T13:35:12-02:00", "received_at"=>"2014-10-08T10:07:41-03:00", "confirmed_at"=>"2015-01-30T13:35:12-02:00", "shipped_at"=>nil, "shipping_tracked_at"=>nil, "delivered_at"=>nil, "canceled_at"=>nil, "emails"=>{"received_sent_at"=>"2014-10-08T10:08:25-03:00", "confirmed_sent_at"=>nil, "shipped_sent_at"=>nil, "delivered_sent_at"=>nil, "canceled_sent_at"=>nil}, "installments"=>1, "phone_area"=>"11", "phone"=>"123412412", "cellphone_area"=>"", "cellphone"=>"", "extra"=>{}, "items"=>[{"id"=>341, "reference"=>"RT002", "product_name"=>"Calcinha para Incontinência Urinária", "sku"=>"13003", "variant_name"=>"Tamanho: M | Cor: Branca", "quantity"=>1, "price"=>159.9, "subtotal"=>159.9, "total"=>159.9, "picture_url"=>"//a3.lvh.me/empty.gif", "weight"=>"0.11", "width"=>"11.0", "height"=>"2.0", "length"=>"16.0", "extra_info"=>{}, "properties"=>{"property1"=>"{\"name\":\"codigo_macle\",\"value\":\"AA\",\"defining\":false}", "property2"=>"{\"name\":\"\",\"value\":\"XG\",\"defining\":false}", "property3"=>"{\"name\":\"\",\"value\":null,\"defining\":null}"}}], "extra_fields"=>[{"name"=>"_gat_UA-38730525-2", "value"=>"1"}, {"name"=>"_ga", "value"=>"GA1.3.1319236697.1412088039"}]}}
+Can't verify CSRF token authenticity
+Shop: 
+  [1m[35mShop Load (1.1ms)[0m  SELECT  "shops".* FROM "shops"  WHERE "shops"."token" = '84e7f547cdfd18eed0fcaa101bcaea26' LIMIT 1
