@@ -2,13 +2,24 @@ class ApiController < ApplicationController
   before_action :set_shop
 
   def schedule
-    # ConfirmedOrderEmail.from_order Shop.first, OrderSerializer.new(Order.last), 'promotion_name', 'subject'
-    binding.pry
-    options = JSON.parse(params[:options], {:symbolize_names => true}) if params[:options]
-    vars = JSON.parse(params[:vars], {:symbolize_names => true}) if params[:vars]
+    # options = JSON.parse(params[:options], {:symbolize_names => true}) if params[:options]
+    # vars = JSON.parse(params[:vars], {:symbolize_names => true}) if params[:vars]
     promotion = options[:promotion_name] if params[:promotion_name]
-    to = params[:to]
-    options[:recipients] = to unless to.blank?
+    # to = params[:to]
+    # options[:recipients] = to unless to.blank?
+
+    # OrderEmailBase.from_order(@shop, params, 'promotion_name', 'subject')
+
+    binding.pry
+
+    case params[event]
+    when 'order-confirmed'
+      subject = "Pedido confirmado"
+    when 'order-received'
+      subject = "Pedido recebido"
+    end
+
+    OrderEmailBase.from_order(@shop, params, promotion_name, subject)
 
     email = Email.new(promotion, options, vars) if options && vars && promotion
 

@@ -50,7 +50,8 @@ class OrderEmailBase
   end
 
   def self.from_order shop, order, promotion_name, subject
-    address = order.billing_address || order.shipping_address
+    @shop = shop
+    address = order_shipping_address(order)
     # Buscar o endereço api
 
     options = extract_options(shop, order, address, promotion_name, subject)
@@ -68,40 +69,39 @@ class OrderEmailBase
     {
       "promotion_name" => promotion_name,
       "subject" => subject,
-      "from" => "#{shop.name} <#{shop.email}>",
-      "recipients" => "#{address.full_name} <#{address.email}>"
+      "from" => "#{shop.name} <#{shop.madmimi_email}>",
+      "recipients" => "#{order['first_name']} #{order['last_name']} <#{address['email']}>"
     }
   end
 
   def self.extract_variables shop, order, address
-    shipping_information = order_shipping(order)
-
+    billing_address = order_billing_address(order)
     {
-      "nome" => address.first_name,
-      "sobrenome" => address.last_name,
-      "pedido" => order.code,
+      "nome" => address['first_name'],
+      "sobrenome" => address['last_name'],
+      "pedido" => order['code'],
       "paginadopedido" => "https://#{shop.host}/pedido/#{order.token}",
       "experienciadocliente" => review_links(shop.host, order.token),
-      "valordodesconto" => order.discount_price.to_f > 0 ? number_to_currency(order.discount_price) : 0,
-      "valordoenvio" => shipping_information["valordoenvio"],
-      "valordopedido" => number_to_currency(order.total),
+      "valordodesconto" => order['discount_price'].to_f > 0 ? number_to_currency(order['discount_price']) : 0,
+      "valordoenvio" => order['shipping_price'].to_f > 0 ? number_to_currency(order['shipping_price']) : 0,
+      "valordopedido" => number_to_currency(order['total']),
       "formadepagamento" => order_installments(order),
       "itensdopedido" => order_items(order),
-      "enderecoentrega" => order.shipping_address.full_address,
-      "bairroentrega" => order.shipping_address.neighborhood,
-      "cidadeentrega" => order.shipping_address.city,
-      "estadoentrega" => order.shipping_address.state,
-      "enderecocobranca" => order.billing_address.full_address,
-      "bairrocobranca" => order.billing_address.neighborhood,
-      "cidadecobranca" => order.billing_address.city,
-      "estadocobranca" => order.billing_address.state,
-      "linkdoboleto" => order.slip? ? order.slip_url : ""
+      "enderecoentrega" => "#{address['street_name']}, #{address['street_number']}",
+      "bairroentrega" => address['neighborhood'],
+      "cidadeentrega" => address['city'],
+      "estadoentrega" => address['state'],
+      "enderecocobranca" => billing_address['full_address'],
+      "bairrocobranca" => billing_address['neighborhood'],
+      "cidadecobranca" => billing_address['city'],
+      "estadocobranca" => billing_address['state'],
+      "linkdoboleto" => order['slip'] == true ? order['slip_url'] : ""
     }.merge(extra_infos(order))
   end
 
   def self.extra_infos order
     {}.tap do |infos|
-      order.extra.select{|name, value| value.present? }.each do |name, value|
+      order['extra'].select{|name, value| value.present? }.each do |name, value|
         key = ActiveSupport::Inflector.transliterate(name).downcase.gsub(/[^a-z]/, "")
         infos[key] = value
       end
@@ -109,22 +109,27 @@ class OrderEmailBase
   end
 
   def self.order_shipping_address order
-    # url = "http://#{shop.api_username}:#{shop.api_password}@#{shop.host}/api/v2/carts/#{cart.id}/installments"
     url = "http://#{@shop.api_key}:#{@shop.api_password}@#{@shop.host}/api/v2/orders/#{order['code']}/shipping_address"
     response = Excon.get(url)
-    {
-      "formadeenvio" => order['shipping_method'],
-      "valordoenvio" => number_to_currency(response['price'])
-    }
+    return nil unless response.status == 200
+    shipping = JSON.parse(response.body)
   end
 
-  def self.order_installments order
-    return "N/A" unless order.payment_method
+  def self.order_billing_address order
+    url = "http://#{@shop.api_key}:#{@shop.api_password}@#{@shop.host}/api/v2/orders/#{order['code']}/billing_address"
+    response = Excon.get(url)
+    return nil unless response.status == 200
+    shipping = JSON.parse(response.body)
+  end
 
-    text = I18n.t(order.payment_method, :scope => [:order, :payment_methods])
-    if order.payment_method =~ /^credit/
-      if order.installments.to_i > 1
-        text << " (em #{order.installments} vezes)"
+
+  def self.order_installments order
+    return "N/A" unless order['payment_method']
+
+    text = I18n.t(order['payment_method'], :scope => [:order, :payment_methods])
+    if order['payment_method'] =~ /^credit/
+      if order['installments'].to_i > 1
+        text << " (em #{order['installments']} vezes)"
       else
         text << " (à vista)"
       end
@@ -144,16 +149,16 @@ class OrderEmailBase
   def self.order_items(order)
     erb = ERB.new <<-HTML
       <table cellspacing="0" cellpadding="10" border="0">
-        <% order.items.each_with_index do |item, index| %>
+        <% order['items'].each_with_index do |item, index| %>
           <tr>
             <td>
-              <img src="http:<%= item.thumb('80x80') %>" />
+              <img src="http:<%= item['thumb']('80x80') %>" />
             </td>
             <td>
-              Item <%= index + 1 %>: <%= item.name %><br />
-              Preço: <%= number_to_currency(item.price) %><br />
-              Quantidade: <%= item.quantity %><br />
-              Subtotal: <%= number_to_currency(item.price * item.quantity) %>
+              Item <%= index + 1 %>: <%= item['name'] %><br />
+              Preço: <%= number_to_currency(item['price']) %><br />
+              Quantidade: <%= item['quantity'] %><br />
+              Subtotal: <%= number_to_currency(item['price'] * item['quantity']) %>
             </td>
           </tr>
         <% end %>
