@@ -17,6 +17,6 @@ class Shop < ActiveRecord::Base
   before_create { self.token = SecureRandom.hex }
 
   def credentials
-    {email: self.settings['madmimi_email'], api_key: self.settings['madmimi_api_key']}
+    {email: self.madmimi_email, api_key: self.madmimi_api_key}
   end
 end

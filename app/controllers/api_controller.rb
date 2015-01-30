@@ -2,32 +2,23 @@ class ApiController < ApplicationController
   before_action :set_shop
 
   def schedule
-    # options = JSON.parse(params[:options], {:symbolize_names => true}) if params[:options]
-    # vars = JSON.parse(params[:vars], {:symbolize_names => true}) if params[:vars]
-    promotion = options[:promotion_name] if params[:promotion_name]
-    # to = params[:to]
-    # options[:recipients] = to unless to.blank?
+    promotion =  params[:event]
 
-    # OrderEmailBase.from_order(@shop, params['order'], 'promotion_name', 'subject')
-
-    binding.pry
-
-    case params[event]
+    case promotion
     when 'order-confirmed'
       subject = "Pedido confirmado"
     when 'order-received'
       subject = "Pedido recebido"
     end
 
-    OrderEmailBase.from_order(@shop, params, promotion_name, subject)
-
-    email = Email.new(promotion, options, vars) if options && vars && promotion
+    email = OrderEmailBase.from_order(@shop, params['order'], promotion, subject)
+    email_parsed = Email.new(promotion, email.options.symbolize_keys, email.vars.symbolize_keys) if email.options && email.vars && promotion
 
     minutes_delay = params[:minutes_delay].to_i
     if minutes_delay.blank?
-      MadmimiWorker.perform_async(@shop.credentials, email) if options && vars && promotion
+      MadmimiWorker.perform_async(@shop.credentials, email_parsed) if email.options && email.vars && promotion
     else
-      MadmimiWorker.perform_in(minutes_delay.minutes, @shop, email) if options && vars && promotion
+      MadmimiWorker.perform_in(minutes_delay.minutes, @shop, email) if email.options && email.vars && promotion
     end
     render :json => 'ok'
   end
