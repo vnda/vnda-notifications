@@ -110,7 +110,7 @@ class OrderEmailBase
 
   def self.order_shipping_address order
     # url = "http://#{shop.api_username}:#{shop.api_password}@#{shop.host}/api/v2/carts/#{cart.id}/installments"
-    url = "http://#{shop.api_username}:#{shop.api_password}@#{@shop.host}/api/v2/orders/#{order['code']}/shipping_address"
+    url = "http://#{@shop.api_key}:#{@shop.api_password}@#{@shop.host}/api/v2/orders/#{order['code']}/shipping_address"
     response = Excon.get(url)
     {
       "formadeenvio" => order['shipping_method'],

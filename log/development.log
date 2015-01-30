@@ -2492,3 +2492,267 @@ Processing by ApiController#schedule as JSON
 Can't verify CSRF token authenticity
 Shop: 
   [1m[35mShop Load (1.1ms)[0m  SELECT  "shops".* FROM "shops"  WHERE "shops"."token" = '84e7f547cdfd18eed0fcaa101bcaea26' LIMIT 1
+Completed   in 408874ms
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddVndaCredentialsToShop (20150130154239)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "shops" ADD COLUMN "api_key" character varying(255)[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "shops" ADD COLUMN "api_password" character varying(255)
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150130154239"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/shops/1/edit" for 10.0.2.2 at 2015-01-30 15:43:42 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ShopsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mShop Load (0.5ms)[0m  SELECT  "shops".* FROM "shops"  WHERE "shops"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_error_messages.html.erb (2.7ms)
+  Rendered shops/_form.html.erb (36.0ms)
+  Rendered shops/edit.html.erb within layouts/application (41.3ms)
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "shops"  WHERE ("shops"."id" != 1)[0m
+  Rendered layouts/_navbar.html.erb (5.2ms)
+  Rendered shared/_flash_messages.html.erb (0.5ms)
+Completed 200 OK in 121ms (Views: 100.7ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 10.0.2.2 at 2015-01-30 15:43:43 +0000
+
+
+Started GET "/assets/jquery.mask.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:43:43 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:43:43 +0000
+
+
+Started GET "/assets/jquery.multiselect.css?body=1" for 10.0.2.2 at 2015-01-30 15:43:43 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.css?body=1" for 10.0.2.2 at 2015-01-30 15:43:43 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-01-30 15:43:43 +0000
+
+
+Started GET "/assets/jquery-ui.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:43:43 +0000
+
+
+Started GET "/assets/jquery.multiselect.js?body=1" for 10.0.2.2 at 2015-01-30 15:43:43 +0000
+
+
+Started PATCH "/shops/1" for 10.0.2.2 at 2015-01-30 15:44:05 +0000
+Processing by ShopsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ENJ9gn4AmyslAxuB8zqpEF4aubrZCJy+4UrjBSSJJnA=", "shop"=>{"name"=>"Loja 10", "host"=>"www.eu.com", "api_key"=>"9e2e5f4441857505123cac60e7196286", "api_password"=>"[FILTERED]", "madmimi_api_key"=>"9e2e5f4441857505123cac60e123", "madmimi_email"=>"1232123123123123123123123123"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[35mShop Load (3.2ms)[0m  SELECT  "shops".* FROM "shops"  WHERE "shops"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "shops" SET "api_key" = $1, "api_password" = $2, "madmimi_api_key" = $3, "madmimi_email" = $4, "updated_at" = $5 WHERE "shops"."id" = 1  [["api_key", "9e2e5f4441857505123cac60e7196286"], ["api_password", "a08a9f1cd2685e07068df65dc9fc4266"], ["madmimi_api_key", "9e2e5f4441857505123cac60e123"], ["madmimi_email", "1232123123123123123123123123"], ["updated_at", "2015-01-30 15:44:05.867345"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/shops
+Completed 302 Found in 18ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/shops" for 10.0.2.2 at 2015-01-30 15:44:05 +0000
+Processing by ShopsController#index as HTML
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "shops"
+  [1m[36mShop Load (0.6ms)[0m  [1mSELECT "shops".* FROM "shops"   ORDER BY "shops"."name" ASC[0m
+  Rendered shops/index.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_navbar.html.erb (0.2ms)
+  Rendered shared/_flash_messages.html.erb (0.2ms)
+Completed 200 OK in 19ms (Views: 17.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/jquery.mask.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:06 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:06 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:06 +0000
+
+
+Started GET "/assets/jquery.multiselect.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:06 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:06 +0000
+
+
+Started GET "/assets/jquery-ui.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:06 +0000
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:06 +0000
+
+
+Started GET "/assets/jquery.multiselect.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:06 +0000
+
+
+Started GET "/shops/1/edit" for 10.0.2.2 at 2015-01-30 15:44:11 +0000
+Processing by ShopsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mShop Load (0.4ms)[0m  SELECT  "shops".* FROM "shops"  WHERE "shops"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_error_messages.html.erb (0.1ms)
+  Rendered shops/_form.html.erb (5.6ms)
+  Rendered shops/edit.html.erb within layouts/application (7.4ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "shops"  WHERE ("shops"."id" != 1)[0m
+  Rendered layouts/_navbar.html.erb (2.5ms)
+  Rendered shared/_flash_messages.html.erb (0.2ms)
+Completed 200 OK in 22ms (Views: 20.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/bootstrap-switch.min.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:11 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:11 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:11 +0000
+
+
+Started GET "/assets/jquery-ui.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:11 +0000
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:11 +0000
+
+
+Started GET "/assets/jquery.multiselect.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:11 +0000
+
+
+Started GET "/assets/jquery.multiselect.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:11 +0000
+
+
+Started GET "/assets/jquery.mask.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:11 +0000
+
+
+Started PATCH "/shops/1" for 10.0.2.2 at 2015-01-30 15:44:19 +0000
+Processing by ShopsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ENJ9gn4AmyslAxuB8zqpEF4aubrZCJy+4UrjBSSJJnA=", "shop"=>{"name"=>"Loja 10", "host"=>"www.retex.lvh.me", "api_key"=>"9e2e5f4441857505123cac60e7196286", "api_password"=>"[FILTERED]", "madmimi_api_key"=>"9e2e5f4441857505123cac60e123", "madmimi_email"=>"1232123123123123123123123123"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[35mShop Load (0.9ms)[0m  SELECT  "shops".* FROM "shops"  WHERE "shops"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "shops" SET "host" = $1, "updated_at" = $2 WHERE "shops"."id" = 1  [["host", "www.retex.lvh.me"], ["updated_at", "2015-01-30 15:44:19.531961"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/shops
+Completed 302 Found in 10ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/shops" for 10.0.2.2 at 2015-01-30 15:44:19 +0000
+Processing by ShopsController#index as HTML
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "shops"
+  [1m[36mShop Load (0.4ms)[0m  [1mSELECT "shops".* FROM "shops"   ORDER BY "shops"."name" ASC[0m
+  Rendered shops/index.html.erb within layouts/application (3.7ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+  Rendered shared/_flash_messages.html.erb (0.3ms)
+Completed 200 OK in 17ms (Views: 16.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/bootstrap-switch.min.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:19 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:19 +0000
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:19 +0000
+
+
+Started GET "/assets/jquery.multiselect.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:19 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:19 +0000
+
+
+Started GET "/assets/jquery.mask.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:19 +0000
+
+
+Started GET "/assets/jquery-ui.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:19 +0000
+
+
+Started GET "/assets/jquery.multiselect.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:19 +0000
+
+
+Started GET "/shops/1/edit" for 10.0.2.2 at 2015-01-30 15:44:22 +0000
+Processing by ShopsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mShop Load (0.5ms)[0m  SELECT  "shops".* FROM "shops"  WHERE "shops"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_error_messages.html.erb (0.1ms)
+  Rendered shops/_form.html.erb (7.2ms)
+  Rendered shops/edit.html.erb within layouts/application (9.3ms)
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "shops"  WHERE ("shops"."id" != 1)[0m
+  Rendered layouts/_navbar.html.erb (1.9ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 23ms (Views: 20.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/jquery.multiselect.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:23 +0000
+
+
+Started GET "/assets/jquery.mask.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:23 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:23 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:23 +0000
+
+
+Started GET "/assets/jquery-ui.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:23 +0000
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:23 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:23 +0000
+
+
+Started GET "/assets/jquery.multiselect.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:23 +0000
+
+
+Started PATCH "/shops/1" for 10.0.2.2 at 2015-01-30 15:44:27 +0000
+Processing by ShopsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ENJ9gn4AmyslAxuB8zqpEF4aubrZCJy+4UrjBSSJJnA=", "shop"=>{"name"=>"Loja 10", "host"=>"retex.lvh.me", "api_key"=>"9e2e5f4441857505123cac60e7196286", "api_password"=>"[FILTERED]", "madmimi_api_key"=>"9e2e5f4441857505123cac60e123", "madmimi_email"=>"1232123123123123123123123123"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[35mShop Load (0.9ms)[0m  SELECT  "shops".* FROM "shops"  WHERE "shops"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "shops" SET "host" = $1, "updated_at" = $2 WHERE "shops"."id" = 1  [["host", "retex.lvh.me"], ["updated_at", "2015-01-30 15:44:27.479689"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/shops
+Completed 302 Found in 10ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/shops" for 10.0.2.2 at 2015-01-30 15:44:27 +0000
+Processing by ShopsController#index as HTML
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM "shops"
+  [1m[36mShop Load (0.4ms)[0m  [1mSELECT "shops".* FROM "shops"   ORDER BY "shops"."name" ASC[0m
+  Rendered shops/index.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_navbar.html.erb (0.2ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:27 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:27 +0000
+
+
+Started GET "/assets/jquery-ui.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:27 +0000
+
+
+Started GET "/assets/jquery.multiselect.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:27 +0000
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:27 +0000
+
+
+Started GET "/assets/jquery.mask.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:27 +0000
+
+
+Started GET "/assets/bootstrap-switch.min.js?body=1" for 10.0.2.2 at 2015-01-30 15:44:27 +0000
+
+
+Started GET "/assets/jquery.multiselect.css?body=1" for 10.0.2.2 at 2015-01-30 15:44:27 +0000
+
+
+Started POST "/api?token=84e7f547cdfd18eed0fcaa101bcaea26&event=order-confirmed&action=send-to-client" for 127.0.0.1 at 2015-01-30 15:44:42 +0000
+Processing by ApiController#schedule as JSON
+  Parameters: {"id"=>256, "code"=>"0F0A1144BC", "token"=>"84e7f547cdfd18eed0fcaa101bcaea26", "status"=>"confirmed", "first_name"=>"Francisco", "last_name"=>"Cortivo", "email"=>"francisco@vnda.com.br", "cpf"=>"00596224079", "zip"=>"99051240", "street_name"=>"Rua Uruguai, 1538", "street_number"=>"1125", "complement"=>"", "neighborhood"=>"Petrópolis", "city"=>"Passo Fundo", "state"=>"RS", "client_id"=>15, "slip"=>true, "slip_url"=>"https://desenvolvedor.moip.com.br/sandbox/Instrucao.do?token=G2Z0Z1N4F0Q9Z141H2S0T0Y0J5Y6D231H8L0I0Q0O0I000F691W469X0K6U0", "slip_token"=>nil, "payment_method"=>"Boleto", "card_number"=>nil, "shipping_method"=>"carona", "shipping_price"=>20.0, "subtotal"=>181.88, "discount_price"=>0.0, "total"=>201.88, "tracking_code"=>nil, "updated_at"=>"2015-01-30T13:44:42-02:00", "received_at"=>"2014-09-11T20:00:55-03:00", "confirmed_at"=>"2015-01-30T13:44:42-02:00", "shipped_at"=>nil, "shipping_tracked_at"=>nil, "delivered_at"=>nil, "canceled_at"=>nil, "emails"=>{"received_sent_at"=>"2014-09-11T20:02:37-03:00", "confirmed_sent_at"=>nil, "shipped_sent_at"=>nil, "delivered_sent_at"=>nil, "canceled_sent_at"=>nil}, "installments"=>1, "phone_area"=>"54", "phone"=>"81128447", "cellphone_area"=>"54", "cellphone"=>"81128447", "extra"=>{"custom_price"=>"191.88"}, "items"=>[{"id"=>331, "reference"=>"RT001", "product_name"=>"Cueca para Incontinência Urinária", "sku"=>"12002", "variant_name"=>"Tamanho: P | Cor: Branca", "quantity"=>1, "price"=>181.88, "subtotal"=>181.88, "total"=>181.88, "picture_url"=>"//a3.lvh.me/empty.gif", "weight"=>"0.1", "width"=>"11.0", "height"=>"2.0", "length"=>"16.0", "extra_info"=>{"custom_price"=>"191.88"}, "properties"=>{"property1"=>"{\"name\":\"codigo_macle\",\"value\":\"branco\",\"defining\":true}", "property2"=>"{\"name\":\"\",\"value\":\"aba\",\"defining\":true}", "property3"=>"{\"name\":\"\",\"value\":\"b\",\"defining\":true}"}}], "extra_fields"=>[{"name"=>"_ga", "value"=>"GA1.2.1485432206.1387198469"}, {"name"=>"_gat_UA-38730525-2", "value"=>"1"}], "event"=>"order-confirmed", "api"=>{"id"=>256, "code"=>"0F0A1144BC", "token"=>"84e7f547cdfd18eed0fcaa101bcaea26", "status"=>"confirmed", "first_name"=>"Francisco", "last_name"=>"Cortivo", "email"=>"francisco@vnda.com.br", "cpf"=>"00596224079", "zip"=>"99051240", "street_name"=>"Rua Uruguai, 1538", "street_number"=>"1125", "complement"=>"", "neighborhood"=>"Petrópolis", "city"=>"Passo Fundo", "state"=>"RS", "client_id"=>15, "slip"=>true, "slip_url"=>"https://desenvolvedor.moip.com.br/sandbox/Instrucao.do?token=G2Z0Z1N4F0Q9Z141H2S0T0Y0J5Y6D231H8L0I0Q0O0I000F691W469X0K6U0", "slip_token"=>nil, "payment_method"=>"Boleto", "card_number"=>nil, "shipping_method"=>"carona", "shipping_price"=>20.0, "subtotal"=>181.88, "discount_price"=>0.0, "total"=>201.88, "tracking_code"=>nil, "updated_at"=>"2015-01-30T13:44:42-02:00", "received_at"=>"2014-09-11T20:00:55-03:00", "confirmed_at"=>"2015-01-30T13:44:42-02:00", "shipped_at"=>nil, "shipping_tracked_at"=>nil, "delivered_at"=>nil, "canceled_at"=>nil, "emails"=>{"received_sent_at"=>"2014-09-11T20:02:37-03:00", "confirmed_sent_at"=>nil, "shipped_sent_at"=>nil, "delivered_sent_at"=>nil, "canceled_sent_at"=>nil}, "installments"=>1, "phone_area"=>"54", "phone"=>"81128447", "cellphone_area"=>"54", "cellphone"=>"81128447", "extra"=>{"custom_price"=>"191.88"}, "items"=>[{"id"=>331, "reference"=>"RT001", "product_name"=>"Cueca para Incontinência Urinária", "sku"=>"12002", "variant_name"=>"Tamanho: P | Cor: Branca", "quantity"=>1, "price"=>181.88, "subtotal"=>181.88, "total"=>181.88, "picture_url"=>"//a3.lvh.me/empty.gif", "weight"=>"0.1", "width"=>"11.0", "height"=>"2.0", "length"=>"16.0", "extra_info"=>{"custom_price"=>"191.88"}, "properties"=>{"property1"=>"{\"name\":\"codigo_macle\",\"value\":\"branco\",\"defining\":true}", "property2"=>"{\"name\":\"\",\"value\":\"aba\",\"defining\":true}", "property3"=>"{\"name\":\"\",\"value\":\"b\",\"defining\":true}"}}], "extra_fields"=>[{"name"=>"_ga", "value"=>"GA1.2.1485432206.1387198469"}, {"name"=>"_gat_UA-38730525-2", "value"=>"1"}]}}
+Can't verify CSRF token authenticity
+Shop: 
+  [1m[35mShop Load (1.1ms)[0m  SELECT  "shops".* FROM "shops"  WHERE "shops"."token" = '84e7f547cdfd18eed0fcaa101bcaea26' LIMIT 1
