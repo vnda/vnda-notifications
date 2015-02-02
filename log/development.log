@@ -3433,3 +3433,4 @@ Processing by ApiController#schedule as JSON
 Can't verify CSRF token authenticity
 Shop: 
   [1m[35mShop Load (1.6ms)[0m  SELECT  "shops".* FROM "shops"  WHERE "shops"."token" = '84e7f547cdfd18eed0fcaa101bcaea26' LIMIT 1
+Completed   in 937765ms
