@@ -41,8 +41,10 @@ class ApiController < ApplicationController
 
     puts "Email parsed: #{email_parsed}"
 
-    options[:recipients] = "#{@shop.name} - <#{@shop.madmimi_email}>" if params[:to].present? && params[:to] == 'shop'
-    options[:recipients] = params[:to] if params[:to].present? && params[:to] != 'shop'
+    options['recipients'] = "#{@shop.name} - <#{@shop.madmimi_email}>" if params[:to].present? && params[:to] == 'shop'
+    options['recipients'] = params[:to] if params[:to].present? && params[:to] != 'shop'
+
+    puts "Options: #{options['recipients']}"
 
     puts "Recipients: #{options[:recipients]}"
 
@@ -52,7 +54,7 @@ class ApiController < ApplicationController
       MadmimiWorker.perform_async(@shop.credentials, email_parsed) if options && email.vars && event
     else
       puts "Madmimi perform with delay"
-      MadmimiWorker.perform_in(minutes_delay.minutes, @shop, email) if options && email.vars && event
+      MadmimiWorker.perform_in(minutes_delay.minutes, @shop, email_parsed) if options && email.vars && event
     end
     render :json => 'ok'
   end
