@@ -22,7 +22,12 @@ class ApiController < ApplicationController
     end
 
     email = OrderEmailBase.from_order(@shop, params['order'], promotion, subject)
-    email_parsed = Email.new(promotion, email.options.symbolize_keys, email.vars.symbolize_keys) if email.options && email.vars && event
+    options = email.options.symbolize_keys
+
+    email_parsed = Email.new(promotion, options, email.vars.symbolize_keys) if email.options && email.vars && event
+
+    options[:recipients] = "#{@shop.name} - <#{@shop.madmimi_email}>" if params[:to].present? && params[:to] == 'shop'
+    options[:recipients] = params[:to] if params[:to].present? && params[:to] != 'shop'
 
     minutes_delay = params[:minutes_delay].to_i
     if minutes_delay.blank?
