@@ -24,12 +24,13 @@ class ApiController < ApplicationController
       promotion = "pedido-confirmado"
     end
 
+    order = params[:order] || params
     puts "Shop: #{@shop.name}"
-    puts "Order: #{params}"
+    puts "Order: #{order}"
     puts "Promotion: #{promotion}"
     puts "Subject: #{subject}"
 
-    email = OrderEmailBase.from_order(@shop, params, promotion, subject)
+    email = OrderEmailBase.from_order(@shop, order, promotion, subject)
     puts "Email: #{email}"
 
     options = email.options.symbolize_keys
