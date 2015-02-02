@@ -8,3 +8,5 @@ gem 'madmimi'
 gem 'pry'
 gem 'sidekiq'
 gem "excon"
+gem 'unicorn'
+gem 'unicorn-rails'
