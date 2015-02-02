@@ -30,6 +30,8 @@ class ApiController < ApplicationController
     puts "Subject: #{subject}"
 
     email = OrderEmailBase.from_order(@shop, params, promotion, subject)
+    puts "Email: #{email}"
+
     options = email.options.symbolize_keys
 
     puts "Options: #{options}"
