@@ -25,7 +25,7 @@ class ApiController < ApplicationController
     end
 
     puts "Shop: #{@shop.name}"
-    puts "Order: #{params['order']}"
+    puts "Order: #{params[:order]}"
     puts "Promotion: #{promotion}"
     puts "Subject: #{subject}"
 
