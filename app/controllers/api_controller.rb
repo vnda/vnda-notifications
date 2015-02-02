@@ -29,7 +29,7 @@ class ApiController < ApplicationController
     puts "Promotion: #{promotion}"
     puts "Subject: #{subject}"
 
-    email = OrderEmailBase.from_order(@shop, params['order'], promotion, subject)
+    email = OrderEmailBase.from_order(@shop, params[:order], promotion, subject)
     options = email.options.symbolize_keys
 
     puts "Options: #{options}"
