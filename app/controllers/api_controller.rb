@@ -46,7 +46,7 @@ class ApiController < ApplicationController
 
     puts "Recipients: #{options[:recipients]}"
 
-    minutes_delay = params[:minutes_delay].to_i
+    minutes_delay = params[:minutes_delay].to_i if params[:minutes_delay]
     if minutes_delay.blank?
       puts "Madmimi perform"
       MadmimiWorker.perform_async(@shop.credentials, email_parsed) if email.options && email.vars && event
