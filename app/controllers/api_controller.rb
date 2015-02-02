@@ -25,11 +25,11 @@ class ApiController < ApplicationController
     end
 
     puts "Shop: #{@shop.name}"
-    puts "Order: #{params[:order]}"
+    puts "Order: #{params}"
     puts "Promotion: #{promotion}"
     puts "Subject: #{subject}"
 
-    email = OrderEmailBase.from_order(@shop, params[:order], promotion, subject)
+    email = OrderEmailBase.from_order(@shop, params, promotion, subject)
     options = email.options.symbolize_keys
 
     puts "Options: #{options}"
