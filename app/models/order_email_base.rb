@@ -49,6 +49,7 @@ class OrderEmailBase
   end
 
   def self.from_order shop, order, promotion_name, subject
+    puts "From order: #{shop} --- #{order} --- #{promo} --- #{subject}"
     @shop = shop
     address = order_shipping_address(order)
     # Buscar o endereço api

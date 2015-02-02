@@ -24,7 +24,7 @@ class ApiController < ApplicationController
       promotion = "pedido-confirmado"
     end
 
-    puts "Shop: @shop.name"
+    puts "Shop: #{@shop.name}"
     puts "Order: #{params['order']}"
     puts "Promotion: #{promotion}"
     puts "Subject: #{subject}"
