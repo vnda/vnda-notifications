@@ -1,0 +1,7 @@
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+/config/database.yml
+/config/.secret-token
+/config/secrets.yml
+/.env
