@@ -37,7 +37,7 @@ class ApiController < ApplicationController
 
     puts "Options: #{options}"
 
-    email_parsed = Email.new(promotion, options, email.vars.symbolize_keys) if email.options && email.vars && event
+    email_parsed = Email.new(promotion, options, email.vars.symbolize_keys) if options && email.vars && event
 
     puts "Email parsed: #{email_parsed}"
 
@@ -49,10 +49,10 @@ class ApiController < ApplicationController
     minutes_delay = params[:minutes_delay].to_i if params[:minutes_delay]
     if minutes_delay.blank?
       puts "Madmimi perform"
-      MadmimiWorker.perform_async(@shop.credentials, email_parsed) if email.options && email.vars && event
+      MadmimiWorker.perform_async(@shop.credentials, email_parsed) if options && email.vars && event
     else
       puts "Madmimi perform with delay"
-      MadmimiWorker.perform_in(minutes_delay.minutes, @shop, email) if email.options && email.vars && event
+      MadmimiWorker.perform_in(minutes_delay.minutes, @shop, email) if options && email.vars && event
     end
     render :json => 'ok'
   end
