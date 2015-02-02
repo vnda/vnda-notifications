@@ -2,6 +2,9 @@ require 'sidekiq'
 
 worker_processes 3
 
+timeout Integer(ENV['UNICORN_TIMEOUT'] || 30)
+
+
 before_fork do |server, worker|
   @sidekiq_pid ||= spawn("bundle exec sidekiq -c 2")
 
