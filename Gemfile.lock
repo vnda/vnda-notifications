@@ -44,6 +44,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (0.6.11)
     json (1.8.1)
+    kgio (2.9.2)
     madmimi (1.1.0)
       activesupport (> 3.0.0)
       crack (> 0.1.7)
@@ -80,6 +81,7 @@ GEM
       activesupport (= 4.1.5)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    raindrops (0.13.0)
     rake (10.3.2)
     redis (3.1.0)
     redis-namespace (1.5.1)
@@ -111,6 +113,13 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
+    unicorn-rails (2.2.0)
+      rack
+      unicorn
 
 PLATFORMS
   ruby
@@ -122,3 +131,5 @@ DEPENDENCIES
   pry
   rails (= 4.1.5)
   sidekiq
+  unicorn
+  unicorn-rails
