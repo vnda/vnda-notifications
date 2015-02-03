@@ -4,12 +4,23 @@ Para configurar:
 
 * Cadastrar a loja no app, com as credenciais do madmimi
 
+* Cadastrar as promocoes no madmimi da seguinte maneira
+  'pedido-confirmado'
+  'pedido-recebido'
+  e etc...
+
 * Cadastrar os hooks no admin da plataforma
   http://vnda-notifications-new.herokuapp.com/api?token={SEU_TOKEN}&event=order-delivered  
   ex: http://vnda-notifications-new.herokuapp.com/api?token=XXX123123XXXYYY&event=order-delivered
 
 * Para alterar o email destino use o parametro 'to' :
   http://vnda-notifications-new.herokuapp.com/api?token=XXX123123YYY&event=order-confirmed&to=emaildestino@gmail.com
+  
+  se quiser enviar para o email cadastrado no app (sac da loja) utilize o parametro:
+  to=shop
 
 * Para determinar quantos minutos aguardar antes de enviar o email
-  http://vnda-notifications-new.herokuapp.com/api?token={SEU_TOKEN}&event=order-delivered&minutes_to_delay=60
+  http://vnda-notifications-new.herokuapp.com/api?token={SEU_TOKEN}&event=order-delivered&minutes_delay=60
+
+
+  
