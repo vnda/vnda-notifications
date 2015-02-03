@@ -4,7 +4,6 @@ class MadmimiWorker
   def perform(credentials, email)
     @credentials = credentials
     puts "Credentials: #{credentials}"
-    puts "Email: #{email}"
     puts "Options: #{email["options"]}"
     puts "Vars: #{email["vars"]}"
 
