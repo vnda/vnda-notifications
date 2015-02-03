@@ -25,13 +25,12 @@ class ApiController < ApplicationController
     end
 
     order = params[:order] || params
+
     puts "Shop: #{@shop.name}"
-    puts "Order: #{order}"
     puts "Promotion: #{promotion}"
     puts "Subject: #{subject}"
 
     email = OrderEmailBase.from_order(@shop, order, promotion, subject)
-    puts "Email: #{email}"
 
     options = email.options.symbolize_keys
 
@@ -41,10 +40,6 @@ class ApiController < ApplicationController
     puts "Options: #{options}"
 
     email_parsed = Email.new(promotion, options, email.vars.symbolize_keys) if options && email.vars && event
-
-
-
-
 
     minutes_delay = params[:minutes_delay].to_i if params[:minutes_delay]
     if minutes_delay.blank?

@@ -4,12 +4,6 @@ class MadmimiWorker
   def perform(shop_id, email)
     @shop = Shop.find(shop_id)
     @credentials = @shop.credentials
-    puts "Credentials: #{@credentials}"
-    puts "Cred. email #{@credentials[:email]} - key: #{@credentials[:api_key]}"
-    puts "Cred. email #{@credentials[:email]} - key: #{@credentials[:api_key]}"
-    puts "Options: #{email["options"]}"
-    puts "Vars: #{email["vars"]}"
-
     response = mimi.send_mail(email["options"], email["vars"])
 
     if response_ok? response
