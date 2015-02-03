@@ -4,6 +4,7 @@ class MadmimiWorker
   def perform(shop_id, email)
     @credentials = Shop.find(shop_id).credentials
     puts "Credentials: #{@credentials}"
+    puts "Cred. email #{@credentials['email']} - key: #{@credentials['api_key']}"
     puts "Options: #{email["options"]}"
     puts "Vars: #{email["vars"]}"
 
