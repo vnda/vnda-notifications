@@ -1,9 +1,8 @@
 class MadmimiWorker
   include Sidekiq::Worker
 
-  def perform(credentials, email)
-    @credentials = credentials
-    puts "Credentials: #{credentials}"
+  def perform(shop_id, email)
+    @credentials = Shop.find(shop_id).credentials
     puts "Options: #{email["options"]}"
     puts "Vars: #{email["vars"]}"
 

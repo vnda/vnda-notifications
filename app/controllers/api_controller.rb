@@ -35,25 +35,24 @@ class ApiController < ApplicationController
 
     options = email.options.symbolize_keys
 
+    options[:recipients] = "#{@shop.name} - <#{@shop.madmimi_email}>" if params[:to] && params[:to] == 'shop'
+    options[:recipients] = params[:to] if params[:to] && params[:to] != 'shop'
+
     puts "Options: #{options}"
 
     email_parsed = Email.new(promotion, options, email.vars.symbolize_keys) if options && email.vars && event
 
-    # puts "Email parsed: #{email_parsed.to_json}"
-
-    # email_parsed[:options][:recipients] = "#{@shop.name} - <#{@shop.madmimi_email}>" if params[:to].present? && params[:to] == 'shop'
-    # email_parsed[:options][:recipients] = params[:to] if params[:to].present? && params[:to] != 'shop'
 
 
-    # puts "Recipients: #{email_parsed[:options][:recipients]}"
+
 
     minutes_delay = params[:minutes_delay].to_i if params[:minutes_delay]
     if minutes_delay.blank?
       puts "Madmimi perform"
-      MadmimiWorker.perform_async(@shop.credentials, email_parsed) if options && email.vars && event
+      MadmimiWorker.perform_async(@shop.id, email_parsed) if options && email.vars && event
     else
       puts "Madmimi perform with delay"
-      MadmimiWorker.perform_in(minutes_delay.minutes, @shop, email_parsed) if options && email.vars && event
+      MadmimiWorker.perform_in(minutes_delay.minutes, @shop.id, email_parsed) if options && email.vars && event
     end
     render :json => 'ok'
   end
