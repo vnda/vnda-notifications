@@ -39,12 +39,13 @@ class ApiController < ApplicationController
 
     email_parsed = Email.new(promotion, options, email.vars.symbolize_keys) if options && email.vars && event
 
-    puts "Email parsed: #{email_parsed.to_json}"
+    # puts "Email parsed: #{email_parsed.to_json}"
 
-    email_parsed[:options][:recipients] = "#{@shop.name} - <#{@shop.madmimi_email}>" if params[:to].present? && params[:to] == 'shop'
-    email_parsed[:options][:recipients] = params[:to] if params[:to].present? && params[:to] != 'shop'
+    # email_parsed[:options][:recipients] = "#{@shop.name} - <#{@shop.madmimi_email}>" if params[:to].present? && params[:to] == 'shop'
+    # email_parsed[:options][:recipients] = params[:to] if params[:to].present? && params[:to] != 'shop'
 
-    puts "Recipients: #{email_parsed[:options][:recipients]}"
+
+    # puts "Recipients: #{email_parsed[:options][:recipients]}"
 
     minutes_delay = params[:minutes_delay].to_i if params[:minutes_delay]
     if minutes_delay.blank?
