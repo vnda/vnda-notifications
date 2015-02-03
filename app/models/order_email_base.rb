@@ -49,7 +49,6 @@ class OrderEmailBase
   end
 
   def self.from_order shop, order, promotion_name, subject
-    puts "From order: #{shop} --- #{order} --- #{promotion_name} --- #{subject}"
     @shop = shop
     address = order_shipping_address(order)
     # Buscar o endereço api
@@ -106,7 +105,6 @@ class OrderEmailBase
 
   def self.order_shipping_address order
     url = "http://#{@shop.api_key}:#{@shop.api_password}@#{@shop.host}/api/v2/orders/#{order['code']}/shipping_address"
-    puts url
     response = Excon.get(url)
     return nil unless response.status == 200
     return shipping = JSON.parse(response.body)
@@ -114,7 +112,6 @@ class OrderEmailBase
 
   def self.order_billing_address order
     url = "http://#{@shop.api_key}:#{@shop.api_password}@#{@shop.host}/api/v2/orders/#{order['code']}/billing_address"
-    puts url
     response = Excon.get(url)
     return nil unless response.status == 200
     return shipping = JSON.parse(response.body)
