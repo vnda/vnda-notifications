@@ -2,9 +2,10 @@ class MadmimiWorker
   include Sidekiq::Worker
 
   def perform(shop_id, email)
-    @credentials = Shop.find(shop_id).credentials
+    @shop = Shop.find(shop_id)
+    @credentials = @shop.credentials
     puts "Credentials: #{@credentials}"
-    puts "Cred. email #{@credentials['email']} - key: #{@credentials['api_key']}"
+    puts "Cred. email #{@credentials[:email]} - key: #{@credentials[:api_key]}"
     puts "Cred. email #{@credentials[:email]} - key: #{@credentials[:api_key]}"
     puts "Options: #{email["options"]}"
     puts "Vars: #{email["vars"]}"
@@ -14,7 +15,7 @@ class MadmimiWorker
     if response_ok? response
       puts "Email sent to #{email["options"]["recipients"]} about #{email["options"]["promotion_name"]}"
     else
-      puts "Could not send mail: #{response} for key #{@credentials['api_key']}"
+      puts "Could not send mail: #{response} for key #{@shop}"
     end
   end
 
@@ -28,7 +29,7 @@ class MadmimiWorker
   end
 
   def mimi
-    @mimi ||= MadMimi.new(@credentials['email'], @credentials['api_key'])
+    @mimi ||= MadMimi.new(@credentials[:email], @credentials[:api_key])
   end
 
 end
